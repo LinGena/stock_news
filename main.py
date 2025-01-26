@@ -14,7 +14,6 @@ def run_tread(symbols):
         type_posts = ['relevance','hot','top']
         for type_post in type_posts:
             try:
-                print('----',symbol,', type=',type_post)
                 RedditPostsSearch().parse(symbol, type_post)
             except Exception as ex:
                 print(ex)
