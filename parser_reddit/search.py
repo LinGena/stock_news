@@ -18,11 +18,12 @@ class RedditPostsSearch(GetSession):
         try:
             cursor = None
             i = 0
+            print('Start Q=',q,'Type=',type_post)
             while i < 10:
                 src = self.get_page_content(q, cursor, type_post)
                 posts = self.get_result_from_src(src, q)
-                print(len(posts),'posts received. Q=',q,'Type=',type_post)
                 if posts:
+                    print(len(posts),'posts received. Q=',q,'Type=',type_post)
                     DbReddit().insert_datas(posts)
                 cursor = self.get_next_page(src)
                 i+=1
